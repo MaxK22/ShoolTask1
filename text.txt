@@ -1,3 +1,15 @@
 123 456
 78910
 11 12
+yes
+yes
+yes
+yes
+no
+apple
+q
+q
+q
+no
+yes
+apple
