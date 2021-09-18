@@ -1,15 +1,18 @@
-123 456
-78910
-11 12
-yes
-yes
-yes
-yes
-no
-apple
-q
-q
-q
-no
-yes
-apple
+A
+1
+2
+C
+3
+4
+U
+5
+6
+B
+7
+8
+I
+2
+3
+E
+0
+0

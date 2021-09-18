@@ -1,6 +1,23 @@
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
+
+bool stringsorting(string a, string b)
+{
+    int y = (int)(a[0])-(int)(b[0]);
+    bool answer;
+    for(int i = 0; i+1 < a.size() && i+1 < b.size() && !y; i++)
+    {
+        y = (int)(a[i+1])-(int)(b[i+1]);
+    }
+    if(y < 0)
+        answer = true;
+    else
+        answer = false;
+    return answer;
+}
 
 int main()
 {
@@ -9,15 +26,40 @@ int main()
     cin >> ans;
     if(ans == 'r')
     {
+        ifstream input;
+        vector< vector<string> > text;
+        input.open("text.txt");
+        int y = 0;
+        for (string line; getline(input, line); y++)
+        {
+            if(y%3 == 0)
+            {
+                vector<string> a;
+                a.resize(3, "");
+                text.push_back(a);
+                text.back()[0] = line;
+            }
+            else{
+                text.back()[y%3] = line;
+            }
+        }
+        for(int i = 0; i + 1 < text.size(); ++i)
+        {
+        for(int j = 0; j+1 < text.size() - i; ++j)
+        {
+            if(stringsorting(text[j+1][0], text[j][0]))
+            {
+                swap(text[j+1], text[j]);
+                //swap(text[j+1], text[j]);
+            }
+        }
+        }
+        for(int i = 0; i < text.size(); ++i)
+        {
+            cout << text[i][0] << ' ' << text[i][1] << ' ' << text[i][2] << endl;
+        }
+        input.close();
 
-
-    ifstream input;
-    input.open("text.txt");
-   for (string line; getline(input, line); )
-    {
-        cout << line << endl;
-    }
-    input.close();
     }
     else{
     ifstream qfile;
