@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 using namespace std;
 
 bool stringsorting(string a, string b)
@@ -30,6 +31,7 @@ int main()
         vector< vector<string> > text;
         input.open("text.txt");
         int y = 0;
+        map<string, bool> books;
         for (string line; getline(input, line); y++)
         {
             if(y%3 == 0)
@@ -42,8 +44,10 @@ int main()
             else{
                 text.back()[y%3] = line;
             }
+            if(y%3==2)
+                books[text.back()[2]];
         }
-        for(int i = 0; i + 1 < text.size(); ++i)
+                for(int i = 0; i + 1 < text.size(); ++i)
         {
         for(int j = 0; j+1 < text.size() - i; ++j)
         {
@@ -58,6 +62,8 @@ int main()
         {
             cout << text[i][0] << ' ' << text[i][1] << ' ' << text[i][2] << endl;
         }
+        cout << "Passed the survey: " << text.size() << endl << "Different books: " << books.size();
+
         input.close();
 
     }
