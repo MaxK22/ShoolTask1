@@ -22,9 +22,11 @@ bool stringsorting(string a, string b)
 
 int main()
 {
-    cout << "Questions or results? (enter r or q)";
+    string str;
+    cout << "Questions or results or do you want change question list? (enter r or q or c)";
     char ans;
     cin >> ans;
+    int ques;
     if(ans == 'r')
     {
         ifstream input;
@@ -66,8 +68,7 @@ int main()
 
         input.close();
 
-    }
-    else{
+    }else if(ans=='q'){
     ifstream qfile;
     ofstream output;
     qfile.open("questions.txt");
@@ -81,6 +82,20 @@ int main()
     }
     qfile.close();
     output.close();
+
+    }else if(ans=='c'){
+        cout<<"How many questions?"<<endl;
+        cin>>ques;
+        getline(cin,str);
+        fstream outf;
+        outf.open("questions.txt",ios::out);
+        for(int i=0;i<ques;i++){
+            getline(cin,str);
+            outf<<str<<endl;
+        }
+        outf.close();
+        outf.open("text.txt",ios::out);
+        outf<<"";
     }
    return 0;
 }
